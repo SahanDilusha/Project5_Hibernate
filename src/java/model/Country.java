@@ -23,7 +23,7 @@ public class Country {
     @Column(name = "name", length = 45, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ArrayList<User> userList;
 
     public Country() {
