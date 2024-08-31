@@ -18,7 +18,11 @@ public class SearchUser1 extends HttpServlet {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         
+        User user = (User) session.load(User.class, 2);
         
+        System.out.println(user.getId());
+        System.out.println(user.getName());
+        System.out.println(user.getMobile());
         
     }
 
