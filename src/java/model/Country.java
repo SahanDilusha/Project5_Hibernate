@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "country")
 public class Country {
-
+    
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,8 @@ public class Country {
 
     @Column(name = "name", length = 45, nullable = false)
     private String name;
+    
+    private ArrayList<User> userList;
 
     public Country() {
 
@@ -42,6 +45,14 @@ public class Country {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
     }
 
 }
