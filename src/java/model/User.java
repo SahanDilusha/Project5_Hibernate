@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -25,6 +26,7 @@ public class User implements Serializable {
     private String mobile;
 
     @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
 
     public User() {
@@ -59,6 +61,14 @@ public class User implements Serializable {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+    
+        public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
 }
