@@ -1,40 +1,31 @@
 package model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "country")
+public class Country {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", length = 25, nullable = false)
+    @Column(name = "name", length = 45, nullable = false)
     private String name;
 
-    @Column(name = "mobile", length = 10, nullable = false)
-    private String mobile;
-
-    @ManyToOne
-    private Country country;
-
-    public User() {
+    public Country() {
 
     }
 
-    public User(int id, String name, String mobile) {
+    public Country(int id, String name) {
         this.id = id;
         this.name = name;
-        this.mobile = mobile;
     }
 
     public int getId() {
@@ -51,14 +42,6 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
 }
