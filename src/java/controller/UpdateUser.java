@@ -12,23 +12,21 @@ import model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-@WebServlet(name = "SaveUser", urlPatterns = {"/SaveUser"})
-public class SaveUser extends HttpServlet {
+@WebServlet(name = "UpdateUser", urlPatterns = {"/UpdateUser"})
+public class UpdateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
 
-        User user = new User();
-        user.setName("Aamal");
-        user.setMobile("0715316398");
+        User user = (User) session.load(User.class, 2);
+        user.setName("Kamal");
 
-        session.save(user);
+        session.update(user);
         session.beginTransaction().commit();
-
         session.close();
-
     }
 
 }
