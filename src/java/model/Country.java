@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ArrayList<User> userList;
+    private List<User> userList;
 
     public Country() {
 
@@ -51,11 +51,11 @@ public class Country {
         this.name = name;
     }
 
-    public ArrayList<User> getUserList() {
+    public List<User> getUserList() {
         return userList;
     }
 
-    public void setUserList(ArrayList<User> userList) {
+    public void setUserList(List<User> userList) {
         this.userList = userList;
     }
 
