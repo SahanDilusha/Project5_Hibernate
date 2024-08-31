@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +12,8 @@ import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 @WebServlet(name = "SearchUser2", urlPatterns = {"/SearchUser2"})
 public class SearchUser2 extends HttpServlet {
@@ -24,6 +25,10 @@ public class SearchUser2 extends HttpServlet {
         Session session = sessionFactory.openSession();
         
         Criteria criteria = session.createCriteria(User.class);
+        
+        Criterion criterion1 = Restrictions.eq("name", "Sahan");
+        criteria.add(criterion1);
+        
         ArrayList<User> user = (ArrayList<User>)criteria.list();
         
         for (User user1 : user) {
