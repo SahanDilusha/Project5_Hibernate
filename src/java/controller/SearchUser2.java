@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,26 +26,26 @@ public class SearchUser2 extends HttpServlet {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
 
-//        Criteria criteria = session.createCriteria(User.class);
-//
-//        ArrayList<User> userList = (ArrayList<User>) criteria.list();
-//
-//        for (User user1 : userList) {
-//            System.out.println(user1.getId());
-//            System.out.println(user1.getName());
-//            System.out.println(user1.getMobile());
-//            System.out.println(user1.getCountry().getName());
-//        }
+        Criteria criteria = session.createCriteria(User.class);
 
-        Country country = (Country) session.load(Country.class, 1);
+        ArrayList<User> userList = (ArrayList<User>) criteria.list();
 
-        List<User> user = country.getUserList();
-        
-        for (User user1 : user) {
-            
+        for (User user1 : userList) {
+            System.out.println(user1.getId());
             System.out.println(user1.getName());
-            
+            System.out.println(user1.getMobile());
+            System.out.println(user1.getCountry().getName());
         }
+
+//        Country country = (Country) session.load(Country.class, 1);
+//
+//        List<User> user = country.getUserList();
+//        
+//        for (User user1 : user) {
+//            
+//            System.out.println(user1.getName());
+//            
+//        }
         
         session.close();
 
