@@ -28,10 +28,10 @@ public class SearchUser6 extends HttpServlet {
                 Projections.property("name")
         ));
         
-        List<User> userList =  criteria.list();
+        List<String> userList =  criteria.list();
         
-        for (User user : userList) {
-            System.out.println(user.getName());
+        for (String user : userList) {
+            System.out.println(user);
         }
         
         session.close();
